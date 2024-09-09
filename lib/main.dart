@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MainApp());
@@ -20,7 +21,7 @@ class MainApp extends StatelessWidget {
       supportedLocales: [
         Locale('en', 'US'),
         Locale('tr', 'TR'),
-        // Locale ('ar', ''),
+        // Locale('ar', ''),
       ],
       home: HomeScreen(),
     );
@@ -32,6 +33,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Locale locale = Localizations.localeOf(context);
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat.yMMMMd(locale.toString()).format(now);
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -40,7 +45,7 @@ class HomeScreen extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.check),
               title: Text(
-                MaterialLocalizations.of(context).okButtonLabel,
+                formattedDate,
               ),
             )
           ],
