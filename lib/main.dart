@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,6 +14,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       localizationsDelegates: [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -39,19 +40,8 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              MaterialLocalizations.of(context).okButtonLabel,
+              AppLocalizations.of(context)!.helloWorld,
             ),
-            const Divider(),
-            Localizations.override(
-                context: context,
-                locale: const Locale('en'),
-                child: Builder(
-                  builder: (context) {
-                    return Text(
-                      MaterialLocalizations.of(context).okButtonLabel,
-                    );
-                  },
-                )),
           ],
         ),
       ),
