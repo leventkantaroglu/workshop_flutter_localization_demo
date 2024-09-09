@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'package:workshop_flutter_localization_demo/generated/l10n.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -14,6 +16,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       localizationsDelegates: [
+        S.delegate,
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -40,7 +43,7 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              AppLocalizations.of(context)!.helloWorld,
+              S.of(context).areYouSureYouWantToDeleteThisItem,
             ),
           ],
         ),
