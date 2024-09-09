@@ -33,21 +33,25 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Locale locale = Localizations.localeOf(context);
-    DateTime now = DateTime.now();
-    String formattedDate = DateFormat.yMMMMd(locale.toString()).format(now);
-
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ListTile(
-              leading: const Icon(Icons.check),
-              title: Text(
-                formattedDate,
-              ),
-            )
+            Text(
+              MaterialLocalizations.of(context).okButtonLabel,
+            ),
+            const Divider(),
+            Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: Builder(
+                  builder: (context) {
+                    return Text(
+                      MaterialLocalizations.of(context).okButtonLabel,
+                    );
+                  },
+                )),
           ],
         ),
       ),
